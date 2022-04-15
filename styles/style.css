@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap');
+
+:root{
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;  
+}
+
+header {
+    border: 1px solid #000;
+    margin-top: 15px;
+    border-radius: 15px;
+    background-color: #9370DB;
+}
+
+h1 b{
+    text-shadow: 2px 0 0 #000;
+    color: #fff;
+}
+
+.container {
+    margin: 0 15vw 0 15vw;
+}
+
+#form-inscricao label {
+    line-height: 1.6;
+    font-size: 13pt;
+}
+
+h1 {
+    text-align: center;
+}
+
+#vitoria {
+    background-color: greenyellow;
+}
+
+#empate {
+    background-color: yellow;
+}
+
+#derrota {
+    background-color: red;
+}
+
+ul li{
+    margin-top: 7px;
+    font-size: 13pt;
+}
+
+#form-inscricao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#button-inscrever {
+    text-align: center;
+    margin: 10px 0 10px 0;
+    border: 10px 10px 10px 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: purple;
+    color: #FFF;
+    width: 30em;
+    align-self: center;
+}
+
+#button-inscrever:hover {
+    background-color: #f9f9f9;
+    color: purple;
+    border-color: purple;
+}
+
+#input-times {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 10px;
+    min-width: 100%;
+    border-radius: 10px;
+    border: 5px solid purple;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+hr {
+    color: purple;
+    height: 1px;
+    border-width: 0;
+    background-color: purple;
+}

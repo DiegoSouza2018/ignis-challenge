@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>DESAFIO-DEV-2022</title>
+</head>
+<body class="container">
+    <header>
+        <h1>🏆<b> Campeonato Brasileiro de Futebol 2022 </b>⚽</h1>
+    </header>
+    <section>
+        <h2><b>📜 Regras</b></h2>
+        <hr>
+        <p>
+            <ul>
+                <li>O campeonato será disputado através do sistema de pontos corridos.</li>
+                <li>O campeonato será composto por rodadas, onde todos os times jogarão em cada rodada.</li>
+                <li>
+                    A pontuação de cada equipe por partida será atribuída da seguinte maneira:
+                    <ul>
+                        <li><span id="vitoria">Vitória</span> = 3 pontos</li>
+                        <li><span id="empate">Empate</span> = 1 ponto</li>
+                        <li><span id="derrota">Derrota</span> = Nenhum ponto atribuído</li>
+                    </ul>
+                </li>
+                <li>Todos os clubes jogarão entre si em 2 turnos. (IDA - VOLTA)</li>
+                <li>
+                    O mandante de campo será o time de número 1. <br>
+                    Ex: TIME 1 x TIME 2, mandante TIME 1.
+                </li>
+                <li>
+                    No jogo de VOLTA, o mando de campo será invertido. <br>
+                    Ex: TIME 2 x TIME 1, mandante TIME 2.
+                </li>
+                <li>Após encerrado todas as rodadas. O time vencedor será aquele que tiver mais pontos, desconsiderando o saldo de gols.</li>
+            </ul>
+        </p>
+    </section>
+    <section>
+        <h2><b>✍ Inscrição</b></h2>
+        <hr>
+        <form id="form-inscricao">
+            <label for="input-times">
+                Insira na caixa abaixo os times juntamente com seu estado no seguinte formato: <b>"Nome do time";"Estado" </b>
+            </label>
+            <textarea id="input-times" placeholder="Ex: Palmeiras;São Paulo" cols="70" rows="10"></textarea> <br>
+            <button id="button-inscrever" type="button">Inscrever</button>
+        </form>
+    </section>
+
+    <script type="module" src="../modules/DIEGO_ROCHA_DESAFIO_DEV_2022.js"></script>
+</body>
+</html>
