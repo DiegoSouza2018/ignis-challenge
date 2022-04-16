@@ -67,8 +67,9 @@ ul li{
     border-radius: 50px;
     background-color: purple;
     color: #FFF;
-    width: 30em;
+    width: 30vw;
     align-self: center;
+    cursor: pointer;
 }
 
 #button-inscrever:hover {
@@ -94,4 +95,54 @@ hr {
     height: 1px;
     border-width: 0;
     background-color: purple;
+}
+
+#tabela-rodadas {
+    width: 100%;
+}
+
+#tabela-rodadas tr :first-child {
+    width: 10%;
+}
+
+#tabela-rodadas tr :nth-child(2), #tabela-rodadas tr :nth-child(6), #tabela-rodadas tr :nth-child(7) {
+    width: 20%;
+}
+
+#tabela-rodadas tr :nth-child(3), #tabela-rodadas tr :nth-child(4), #tabela-rodadas tr :nth-child(5) {
+    width: 5%;
+}
+
+#tabela-rodadas tr :nth-child(8) {
+    width: 15%;
+}
+
+#tabela-rodadas tr th {
+    font-size: 1.2rem;
+}
+
+#tabela-rodadas tr td {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#tabela-rodadas th, #tabela-rodadas td {
+    padding: 5px;
+}
+
+#tabela-rodadas :first-child th {
+    background-color: purple;
+    color: #fff;
+}
+
+#tabela-rodadas tr:nth-child(even){
+    background-color: #CF9FFF;
+}
+
+#tabela-rodadas tr:nth-child(odd){
+    background-color: #E6E6FA;
+}
+
+.hidden {
+    display: none;
 }

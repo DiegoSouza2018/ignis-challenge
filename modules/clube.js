@@ -1,6 +1,5 @@
-
 // Dados corresponde a uma string com nome do time + estado separados por ";"
-function criarTime(dados){
+function criarClube(dados){
     if(dados){
         let dadosFormatado = dados.split(';');
         const time = {
@@ -14,4 +13,4 @@ function criarTime(dados){
     return {};
 }
 
-export default criarTime;
+export default criarClube;
