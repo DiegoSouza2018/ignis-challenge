@@ -143,3 +143,18 @@ hr {
 .hidden {
     display: none;
 }
+
+#emoticon-trofeu {
+    font-size: 5rem;
+    text-align: center;
+}
+
+#campo-campeao {
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+section {
+    margin-bottom: 20px;
+}

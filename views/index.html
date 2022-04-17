@@ -54,7 +54,7 @@
         <h2><b>&#9876;&#65039; Rodadas (IDA)</b></h2>
         <hr>
         <table id="tabela-rodadas-ida" class="tabela-rodadas">
-            <tr>
+            <tr class="cabecalho">
                 <th>Rodada</th>
                 <th>Casa</th>
                 <th></th>
@@ -73,7 +73,7 @@
         <h2><b>&#9876;&#65039; Rodadas (VOLTA)</b></h2>
         <hr>
         <table id="tabela-rodadas-volta" class="tabela-rodadas">
-            <tr>
+            <tr class="cabecalho">
                 <th>Rodada</th>
                 <th>Casa</th>
                 <th></th>
@@ -84,6 +84,36 @@
                 <th>Tipo Rodada</th>
             </tr>
         </table>
+        <div class="flex">
+            <button id="button-exibir-resultados" type="button" class="button" onclick="window.location.href='#secao-rodadas-resultados'">Exibir resultados</button>
+        </div>
+    </section>
+    <section id="secao-rodadas-resultados" class="hidden">
+        <h2><b>&#9876;&#65039; Resultados das Rodadas</b></h2>
+        <hr>
+        <table id="tabela-rodadas-resultados" class="tabela-rodadas">
+            <tr class="cabecalho">
+                <th>Rodada</th>
+                <th>Casa</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Fora</th>
+                <th>Local do Jogo</th>
+                <th>Tipo Rodada</th>
+            </tr>
+        </table>
+        <div class="flex">
+            <button id="button-exibir-campeao" type="button" class="button" onclick="window.location.href='#secao-rodadas-campeao'">Exibir campeão</button>
+        </div>
+    </section>
+    <section id="secao-rodadas-campeao" class="hidden">
+        <h2><b>🏆 Campeão</b></h2>
+        <hr>
+        <div class="flex">
+            <span id="emoticon-trofeu">🏆🥇</span>
+            <span id="campo-campeao"></span>
+        </div>
     </section>
 
     <script type="module" src="../modules/DIEGO_ROCHA_DESAFIO_DEV_2022.js"></script>

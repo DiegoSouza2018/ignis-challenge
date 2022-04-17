@@ -9,11 +9,45 @@ function getVencedor(tabela){
     return vencedor;
 }
 
-function gerarResultadoRandomicoPorPartida(campeonato){
-    
+function pontuarClubes(tabela, casa, pontosCasa, fora, pontosFora){
+    for(var i=0; i<tabela.length; i++){
+        if(tabela[i].nome == casa.nome) tabela[i].pontuacao += pontosCasa;
+        else if(tabela[i].nome == fora.nome) tabela[i].pontuacao += pontosFora;
+    }
+    return tabela;
 }
 
-function criarCampeonato(clubes){
+export function gerarResultadoRandomicoPorPartida(campeonato){
+    campeonato.rodadasIda.forEach(rodada => rodada.partidas.forEach(partida => {
+        partida.golsCasa = Math.round(Math.random() * 6);
+        partida.golsFora = Math.round(Math.random() * 6);
+        if(partida.golsCasa > partida.golsFora){
+            campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 3, partida.fora, 0);
+        }
+        else if(partida.golsFora > partida.golsCasa){
+            campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 0, partida.fora, 3);
+        }
+        else
+        campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 1, partida.fora, 1);
+    }));
+
+    campeonato.rodadasVolta.forEach(rodada => rodada.partidas.forEach(partida => {
+        partida.golsCasa = Math.round(Math.random() * 6);
+        partida.golsFora = Math.round(Math.random() * 6);
+        if(partida.golsCasa > partida.golsFora){
+            campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 3, partida.fora, 0);
+        }
+        else if(partida.golsFora > partida.golsCasa){
+            campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 0, partida.fora, 3);
+        }
+        else
+        campeonato.tabela = pontuarClubes(campeonato.tabela, partida.casa, 1, partida.fora, 1);
+    }));
+
+    return campeonato;
+}
+
+export function criarCampeonato(clubes){
     const rodadasIda = criarRodadasIda(clubes);
     const tabela = [];
 
@@ -33,5 +67,3 @@ function criarCampeonato(clubes){
 
     return campeonato;
 }
-
-export default criarCampeonato;
