@@ -24,7 +24,7 @@ function extrairTimes(dados){
     listaTimes.forEach(
         item => {
             let time = criarClube(item);
-            if(time) times.push(time);
+            if(time) times.push(time); // Se o time estiver vazio é ignorado na lista.
         }
     );
     return times;
@@ -48,7 +48,7 @@ function criarLinhaTabelaRodadas(partida){
         golsFora: partida.golsFora,
         fora: partida.fora.nome,
         local: partida.local,
-        tipoRodada: ''
+        tipoRodada: partida.tipoRodada
     };
 
     for(var prop in dadosCelula){

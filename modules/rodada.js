@@ -118,12 +118,36 @@ function definirRodadasQuantidadeClubesImpares(clubes){
     return rodadas;
 }
 
+function verificarRodadaDupla(rodada){
+
+    for(var i=0; i<rodada.partidas.length-1; i++){
+        for(var j=i+1; j<rodada.partidas.length; j++){
+            if(rodada.partidas[i].local.toLowerCase() == rodada.partidas[j].local.toLowerCase()){
+                rodada.partidas[i].tipoRodada = 'RODADA DUPLA';
+                rodada.partidas[j].tipoRodada = 'RODADA DUPLA';
+            }
+        }
+    }
+
+    for (var i=0; i<rodada.partidas.length; i++){
+        if(!rodada.partidas[i].hasOwnProperty('tipoRodada')){
+            rodada.partidas[i].tipoRodada = '';
+        }
+    }
+
+    return rodada;
+}
+
 export function criarRodadasIda(clubes){
     let rodadas = [];
 
     if(clubes.length%2 == 0)
         rodadas = definirRodadasQuantidadeClubesPares(clubes);
     else rodadas = definirRodadasQuantidadeClubesImpares(clubes);
+
+    for(var i=0; i<rodadas.length; i++){
+        rodadas[i] = verificarRodadaDupla(rodadas[i]);
+    }
 
     return rodadas;
 }
@@ -148,7 +172,7 @@ function inverterMandoDePartidas(partidas, numeroRodada){
 
 export function criarRodadasVolta(rodadasIda){
     const qtdRodadas = rodadasIda.length;
-    const rodadasVolta = [];
+    let rodadasVolta = [];
 
     rodadasIda.forEach(rodada => {
         rodadasVolta.push({
@@ -156,6 +180,10 @@ export function criarRodadasVolta(rodadasIda){
             partidas: inverterMandoDePartidas(rodada.partidas, qtdRodadas + rodada.numero),
         });
     });
+
+    for(var i=0; i<rodadasVolta.length; i++){
+        rodadasVolta[i] = verificarRodadaDupla(rodadasVolta[i]);
+    }
 
     return rodadasVolta;
 }
