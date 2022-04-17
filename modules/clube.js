@@ -6,10 +6,8 @@ function criarClube(dados){
             nome: dadosFormatado[0],
             estado: dadosFormatado[1]
         }
-
         return time;
     }
-
     return {};
 }
 

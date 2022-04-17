@@ -28,7 +28,7 @@ function proximaRodada(clubesCasa, clubesFora){
 function definirRodadasQuantidadeClubesPares(clubes){
     var clubesCasa = [];
     var clubesFora = [];
-    const partidas = [];
+    const rodadas = [];
 
     // Divide os clubes em dois Arrays (CASA x FORA)
     for(var i=0; i<clubes.length; i++){
@@ -41,11 +41,16 @@ function definirRodadasQuantidadeClubesPares(clubes){
     var qtdRodadas = 0;
 
     while(qtdRodadas<totalRodadas){
+        rodadas.push({
+            numero: qtdRodadas + 1,
+            partidas: new Array()
+        });
+
         for(var i=0; i<clubesCasa.length; i++){
-            partidas.push(
+            rodadas[qtdRodadas].partidas.push(
                 {
-                    casa: clubesCasa[i].nome,
-                    fora: clubesFora[i].nome,
+                    casa: { ...clubesCasa[i] },
+                    fora: { ...clubesFora[i] },
                     golsCasa: 0,
                     golsFora: 0,
                     turno: 'IDA',
@@ -58,7 +63,7 @@ function definirRodadasQuantidadeClubesPares(clubes){
         qtdRodadas++;
     }
 
-    return partidas;
+    return rodadas;
 }
 
 /*
@@ -69,7 +74,7 @@ function definirRodadasQuantidadeClubesPares(clubes){
 function definirRodadasQuantidadeClubesImpares(clubes){
     var clubesCasa = [];
     var clubesFora = [];
-    const partidas = [];
+    const rodadas = [];
 
     // Indica a rodada de descanso
     clubesCasa.push({
@@ -88,11 +93,16 @@ function definirRodadasQuantidadeClubesImpares(clubes){
     var qtdRodadas = 0;
 
     while(qtdRodadas<totalRodadas){
+        rodadas.push({
+            numero: qtdRodadas + 1,
+            partidas: new Array()
+        });
+
         for(var i=1; i<clubesCasa.length; i++){
-            partidas.push(
+            rodadas[qtdRodadas].partidas.push(
                 {
-                    casa: clubesCasa[i].nome,
-                    fora: clubesFora[i].nome,
+                    casa: { ...clubesCasa[i] },
+                    fora: { ...clubesFora[i] },
                     golsCasa: 0,
                     golsFora: 0,
                     turno: 'IDA',
@@ -105,17 +115,47 @@ function definirRodadasQuantidadeClubesImpares(clubes){
         qtdRodadas++;
     }
 
-    return partidas;
+    return rodadas;
 }
 
-function criarRodadas(clubes){
-    let partidas = [];
+export function criarRodadasIda(clubes){
+    let rodadas = [];
 
     if(clubes.length%2 == 0)
-        partidas = definirRodadasQuantidadeClubesPares(clubes);
-    else partidas = definirRodadasQuantidadeClubesImpares(clubes);
+        rodadas = definirRodadasQuantidadeClubesPares(clubes);
+    else rodadas = definirRodadasQuantidadeClubesImpares(clubes);
 
-    return partidas;
+    return rodadas;
 }
 
-export default criarRodadas;
+function inverterMandoDePartidas(partidas, numeroRodada){
+    const partidasVolta = [];
+
+    partidas.forEach(partida => {
+        partidasVolta.push({
+            casa: { ...partida.fora },
+            fora: { ...partida.casa },
+            golsCasa: 0,
+            golsFora: 0,
+            turno: 'VOLTA',
+            local: partida.fora.estado,
+            rodada: numeroRodada
+        });
+    });
+
+    return partidasVolta;
+}
+
+export function criarRodadasVolta(rodadasIda){
+    const qtdRodadas = rodadasIda.length;
+    const rodadasVolta = [];
+
+    rodadasIda.forEach(rodada => {
+        rodadasVolta.push({
+            numero: qtdRodadas + rodada.numero,
+            partidas: inverterMandoDePartidas(rodada.partidas, qtdRodadas + rodada.numero),
+        });
+    });
+
+    return rodadasVolta;
+}

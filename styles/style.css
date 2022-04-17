@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@500&display=swap');
 
-:root{
-
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9f9f9;  
@@ -51,13 +47,13 @@ ul li{
     font-size: 13pt;
 }
 
-#form-inscricao {
+.flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#button-inscrever {
+.button {
     text-align: center;
     margin: 10px 0 10px 0;
     border: 10px 10px 10px 10px;
@@ -72,7 +68,7 @@ ul li{
     cursor: pointer;
 }
 
-#button-inscrever:hover {
+.button:hover {
     background-color: #f9f9f9;
     color: purple;
     border-color: purple;
@@ -97,49 +93,50 @@ hr {
     background-color: purple;
 }
 
-#tabela-rodadas {
+.tabela-rodadas {
     width: 100%;
+    margin-bottom: 20px;
 }
 
-#tabela-rodadas tr :first-child {
+.tabela-rodadas tr :first-child {
     width: 10%;
 }
 
-#tabela-rodadas tr :nth-child(2), #tabela-rodadas tr :nth-child(6), #tabela-rodadas tr :nth-child(7) {
+.tabela-rodadas tr :nth-child(2), .tabela-rodadas tr :nth-child(6), .tabela-rodadas tr :nth-child(7) {
     width: 20%;
 }
 
-#tabela-rodadas tr :nth-child(3), #tabela-rodadas tr :nth-child(4), #tabela-rodadas tr :nth-child(5) {
+.tabela-rodadas tr :nth-child(3), .tabela-rodadas tr :nth-child(4), .tabela-rodadas tr :nth-child(5) {
     width: 5%;
 }
 
-#tabela-rodadas tr :nth-child(8) {
+.tabela-rodadas tr :nth-child(8) {
     width: 15%;
 }
 
-#tabela-rodadas tr th {
+.tabela-rodadas tr th {
     font-size: 1.2rem;
 }
 
-#tabela-rodadas tr td {
+.tabela-rodadas tr td {
     text-align: center;
     font-size: 1.1rem;
 }
 
-#tabela-rodadas th, #tabela-rodadas td {
+.tabela-rodadas th, .tabela-rodadas td {
     padding: 5px;
 }
 
-#tabela-rodadas :first-child th {
+.tabela-rodadas :first-child th {
     background-color: purple;
     color: #fff;
 }
 
-#tabela-rodadas tr:nth-child(even){
+.tabela-rodadas tr:nth-child(even){
     background-color: #CF9FFF;
 }
 
-#tabela-rodadas tr:nth-child(odd){
+.tabela-rodadas tr:nth-child(odd){
     background-color: #E6E6FA;
 }
 

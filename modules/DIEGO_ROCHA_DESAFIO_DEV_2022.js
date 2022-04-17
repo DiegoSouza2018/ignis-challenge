@@ -1,10 +1,13 @@
 import criarClube from './clube.js';
-import criarRodadas from './rodada.js';
+import criarCampeonato from './campeonato.js';
 
 const buttonInscrever = document.querySelector('#button-inscrever');
+const buttonExibirJogosVolta = document.querySelector('#button-exibir-jogos-volta');
 const inputTimes = document.querySelector('#input-times');
-const tabelaRodadas = document.querySelector('#tabela-rodadas');
-const secaoRodadas = document.querySelector('#secao-rodadas');
+const tabelaRodadasIda = document.querySelector('#tabela-rodadas-ida');
+const tabelaRodadasVolta = document.querySelector('#tabela-rodadas-volta');
+const secaoRodadasIda = document.querySelector('#secao-rodadas-ida');
+const secaoRodadasVolta = document.querySelector('#secao-rodadas-volta');
 
 function extrairTimes(dados){
     const listaTimes = dados.split('\n');
@@ -30,11 +33,11 @@ function criarLinhaTabelaRodadas(partida){
 
     const dadosCelula = {
         numeroRodada: partida.rodada,
-        casa: partida.casa,
+        casa: partida.casa.nome,
         golsCasa: partida.golsCasa,
         simboloPlacar: 'X',
         golsFora: partida.golsFora,
-        fora: partida.fora,
+        fora: partida.fora.nome,
         local: partida.local,
         tipoRodada: ''
     };
@@ -46,17 +49,23 @@ function criarLinhaTabelaRodadas(partida){
     return linha;
 }
 
-function imprimirPartidas(partidas){
+function imprimirPartidas(tabelaRodadas, partidas){
     partidas.forEach(partida => {
         tabelaRodadas.appendChild(criarLinhaTabelaRodadas(partida));
     });
 }
 
+function exibirJogosVolta(){
+    secaoRodadasVolta.classList.remove('hidden');
+}
+
 function realizarInscricao(){
     const listaTimes = extrairTimes(inputTimes.value);
-    const partidas = criarRodadas(listaTimes);
-    imprimirPartidas(partidas);
-    secaoRodadas.classList.remove('hidden');
+    const campeonato = criarCampeonato(listaTimes);
+    campeonato.rodadasIda.forEach(rodada => imprimirPartidas(tabelaRodadasIda, rodada.partidas));
+    campeonato.rodadasVolta.forEach(rodada => imprimirPartidas(tabelaRodadasVolta, rodada.partidas));
+    secaoRodadasIda.classList.remove('hidden');
 }
 
 buttonInscrever.addEventListener('click', realizarInscricao);
+buttonExibirJogosVolta.addEventListener('click', exibirJogosVolta);
